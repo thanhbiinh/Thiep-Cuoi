@@ -1,0 +1,22 @@
+THIỆP CƯỚI ONLINE
+
+CẤU TRÚC
+  index.html          trang thiệp (sửa tên, ngày, địa điểm ở object C đầu phần <script>)
+  config.js           danh sách ảnh, nhạc, QR (tự tạo, không sửa tay)
+  cap-nhat-anh.py     script cập nhật config.js
+  anh/                BỎ ẢNH VÀO ĐÂY (kéo thả)
+  nhac/               bỏ 1 file .mp3 làm nhạc nền (không bắt buộc)
+  qr/                 bỏ 1 ảnh QR ngân hàng cho hộp quà (không bắt buộc)
+
+CÁCH LÀM
+  1. Kéo ảnh vào thư mục anh/. Đặt tên "01 - Đà Lạt 2024.jpg" nếu muốn có chú thích.
+  2. Mở terminal trong thư mục này, chạy:  python cap-nhat-anh.py
+     (nên cài trước: pip install pillow, để ảnh được nén cho nhẹ)
+  3. Mở index.html để xem thử.
+  4. Đưa cả thư mục lên hosting (Netlify Drop, GitHub Pages...) để lấy link gửi khách.
+     Nhớ đưa cả anh-web/, nhac/, qr/, config.js. Nếu cài Pillow thì không cần đưa anh/ (ảnh gốc nặng).
+
+LƯU Ý
+  - Trước khi mở index.html trực tiếp từ máy, nếu nhạc không tự phát là bình thường:
+    trình duyệt chỉ cho phát sau khi khách chạm vào dấu niêm.
+  - Phần RSVP hiện chỉ lưu trong trình duyệt của khách, chưa gửi về cho bạn.
