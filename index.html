@@ -1697,69 +1697,6 @@
         });
       })();
 
-<<<<<<< HEAD
-// Lời chúc: gửi về Google Sheet khi có sheetUrl, không thì chỉ lưu trong trình duyệt này
-var form=$("form"),KEY="thiep-loi-chuc",SU=C.sheetUrl||"",sending=false,wishList=null,shown=0;
-function renderWishes(more){
-  var box=$("wishes");
-  if(!wishList.length){box.innerHTML='<p class="wnote">Hãy là người đầu tiên gửi lời chúc.</p>';$("moreW").style.display="none";return}
-  var end=Math.min(wishList.length,shown+(more?10:8));
-  for(var i=shown;i<end;i++){
-    var d=document.createElement("div"),p=document.createElement("p"),b=document.createElement("b");
-    d.className="wish";p.textContent=wishList[i].wish;b.textContent=wishList[i].name;
-    d.appendChild(p);d.appendChild(b);box.appendChild(d);
-  }
-  shown=end;$("moreW").style.display=shown<wishList.length?"":"none";
-}
-function loadWishes(){
-  var box=$("wishes"),CK="thiep-wishes-cache",had=false;
-  // Có bản lưu từ lần xem trước thì hiện ngay, rồi cập nhật bản mới khi tải xong
-  try{
-    var c=JSON.parse(localStorage.getItem(CK)||"null");
-    if(c&&c.length){wishList=c;shown=0;box.innerHTML="";renderWishes(false);had=true}
-  }catch(x){}
-  if(!had)box.innerHTML='<p class="wnote">Đang tải lời chúc…</p>';
-  fetch(SU+(SU.indexOf("?")<0?"?":"&")+"t="+Date.now()).then(function(r){return r.json()}).then(function(j){
-    var l=(j.wishes||[]).filter(function(w){return w&&String(w.name||"").trim()&&String(w.wish||"").trim()});
-    try{localStorage.setItem(CK,JSON.stringify(l))}catch(x){}
-    wishList=l;shown=0;box.innerHTML="";renderWishes(false);
-  }).catch(function(){if(!had)box.innerHTML='<p class="wnote">Chưa tải được lời chúc.</p>'});
-}
-if(SU){
-  $("wall").hidden=false;
-  loadWishes(); // tải sớm ngay khi mở trang, lúc khách còn đang ở màn hình thiệp mời
-  $("moreW").addEventListener("click",function(){renderWishes(true)});
-}
-function sent(name,wish,mod,at){
-  $("tTitle").textContent="Cảm ơn bạn, "+name+"!";
-  $("tText").textContent=(at==="yes"?"Hẹn gặp bạn tại tiệc cưới nhé! ":"Tiếc quá, hẹn bạn dịp khác nhé! ")+(mod?"Lời chúc của bạn sẽ hiện lên thiệp sau khi được duyệt.":"Chúng mình rất vui khi nhận được lời chúc của bạn.");
-  form.style.display="none";$("thanks").style.display="block";$("thanks").focus();
-  if(SU&&!mod&&wishList){wishList.unshift({name:name,wish:wish});$("wishes").innerHTML="";shown=0;renderWishes(false)}
-}
-form.addEventListener("submit",function(e){
-  e.preventDefault();
-  if(sending)return;
-  var name=$("name").value.trim(),wish=$("note").value.trim();
-  if(!name){$("err").textContent="Bạn nhập tên giúp chúng mình nhé.";$("name").focus();return}
-  if(!wish){$("err").textContent="Bạn viết vài lời chúc giúp chúng mình nhé.";$("note").focus();return}
-  var atEl=form.querySelector("input[name=attend]:checked"),at=atEl?atEl.value:"";
-  if(!at){$("err").textContent="Bạn chọn giúp chúng mình tham dự hay bận nhé.";form.querySelector("input[name=attend]").focus();return}
-  $("err").textContent="";
-  try{localStorage.setItem(KEY,JSON.stringify({name:name}))}catch(x){}
-  if(!SU){sent(name,wish,false,at);return}
-  sending=true;
-  var btn=form.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Đang gửi…";
-  fetch(SU,{method:"POST",body:JSON.stringify({name:name,wish:wish,attend:at==="yes"?"Sẽ tham dự":"Bận",website:$("hp").value})})
-    .then(function(r){return r.json()})
-    .then(function(j){if(!j.ok)throw 0;$("note").value="";if(atEl)atEl.checked=false;sent(name,wish,j.moderated,at)})
-    .catch(function(){$("err").textContent="Chưa gửi được, bạn kiểm tra mạng rồi thử lại nhé."})
-    .then(function(){sending=false;btn.disabled=false;btn.textContent="Gửi lời chúc"});
-});
-$("again").addEventListener("click",function(){$("thanks").style.display="none";form.style.display="grid";$("note").focus()});
-try{var old=JSON.parse(localStorage.getItem(KEY)||"null");if(old)$("name").value=old.name||""}catch(x){}
-})();
-</script>
-=======
       // Lời chúc: gửi về Google Sheet khi có sheetUrl, không thì chỉ lưu trong trình duyệt này
       var form = $("form"), KEY = "thiep-loi-chuc", SU = C.sheetUrl || "", sending = false, wishList = null, shown = 0;
       function renderWishes(more) {
@@ -1824,7 +1761,6 @@ try{var old=JSON.parse(localStorage.getItem(KEY)||"null");if(old)$("name").value
       try { var old = JSON.parse(localStorage.getItem(KEY) || "null"); if (old) $("name").value = old.name || "" } catch (x) { }
     })();
   </script>
->>>>>>> c5f5b22 (add)
 </body>
 
 </html>
