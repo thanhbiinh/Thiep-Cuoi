@@ -502,17 +502,22 @@ function renderWishes(more){
   shown=end;$("moreW").style.display=shown<wishList.length?"":"none";
 }
 function loadWishes(){
-  var box=$("wishes");box.innerHTML='<p class="wnote">Đang tải lời chúc…</p>';
+  var box=$("wishes"),CK="thiep-wishes-cache",had=false;
+  // Có bản lưu từ lần xem trước thì hiện ngay, rồi cập nhật bản mới khi tải xong
+  try{
+    var c=JSON.parse(localStorage.getItem(CK)||"null");
+    if(c&&c.length){wishList=c;shown=0;box.innerHTML="";renderWishes(false);had=true}
+  }catch(x){}
+  if(!had)box.innerHTML='<p class="wnote">Đang tải lời chúc…</p>';
   fetch(SU+(SU.indexOf("?")<0?"?":"&")+"t="+Date.now()).then(function(r){return r.json()}).then(function(j){
-    wishList=j.wishes||[];shown=0;box.innerHTML="";renderWishes(false);
-  }).catch(function(){box.innerHTML='<p class="wnote">Chưa tải được lời chúc.</p>'});
+    var l=(j.wishes||[]).filter(function(w){return w&&String(w.name||"").trim()&&String(w.wish||"").trim()});
+    try{localStorage.setItem(CK,JSON.stringify(l))}catch(x){}
+    wishList=l;shown=0;box.innerHTML="";renderWishes(false);
+  }).catch(function(){if(!had)box.innerHTML='<p class="wnote">Chưa tải được lời chúc.</p>'});
 }
 if(SU){
   $("wall").hidden=false;
-  if("IntersectionObserver" in window){
-    var wo=new IntersectionObserver(function(es){if(es[0].isIntersecting){wo.disconnect();loadWishes()}},{rootMargin:"300px"});
-    wo.observe($("wall"));
-  }else loadWishes();
+  loadWishes(); // tải sớm ngay khi mở trang, lúc khách còn đang ở màn hình thiệp mời
   $("moreW").addEventListener("click",function(){renderWishes(true)});
 }
 function sent(name,wish,mod,at){
