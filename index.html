@@ -6,10 +6,10 @@
 <title>Thiệp cưới Thành Long &amp; Thuý Hà</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Be+Vietnam+Pro:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&display=swap">
 <style>
 :root{--paper:#EDF1EE;--card:#F8FAF8;--ink:#1D3533;--mute:#5B706D;--accent:#4F7A94;--petal:#C98F8A;--line:#C9D5D1;
---serif:"Fraunces","Times New Roman",serif;--sans:"Be Vietnam Pro",system-ui,sans-serif;
+--serif:"Fraunces","Times New Roman",serif;--sans:"Be Vietnam Pro",system-ui,sans-serif;--name:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#14201F;--card:#1B2B2A;--ink:#E6EEEB;--mute:#9DB1AD;--accent:#8DB5CE;--petal:#D9A09A;--line:#2F4543;color-scheme:dark}}
 :root[data-theme="dark"]{--paper:#14201F;--card:#1B2B2A;--ink:#E6EEEB;--mute:#9DB1AD;--accent:#8DB5CE;--petal:#D9A09A;--line:#2F4543;color-scheme:dark}
@@ -35,8 +35,8 @@ section{max-width:620px;margin:0 auto;padding:72px 24px}
 @keyframes inv{from{opacity:0;transform:translateY(26px)}}
 .invite .fl{width:32px;height:32px;color:var(--petal);display:block;margin:0 auto 14px}
 .invite small{display:block;letter-spacing:.3em;font-size:.7rem;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
-.invite .n{display:block;font:italic 300 clamp(2.2rem,11vw,3rem)/1.15 var(--serif);white-space:nowrap}
-.invite .amp{display:block;font:300 1.3rem var(--serif);color:var(--petal);margin:2px 0}
+.invite .n{display:block;font:400 clamp(2.2rem,11vw,3rem)/1.2 var(--name);font-optical-sizing:auto;white-space:nowrap}
+.invite .amp{display:block;font:italic 300 1.3rem var(--serif);color:var(--petal);margin:2px 0}
 .invite .dt{margin-top:22px;color:var(--mute);font-size:.85rem;letter-spacing:.14em}
 .seal{position:absolute;left:50%;bottom:-30px;translate:-50% 0;width:60px;height:60px;border-radius:50%;border:0;background:var(--petal);color:#fff;cursor:pointer;display:grid;place-items:center;padding:0;box-shadow:0 3px 10px rgba(0,0,0,.22)}
 .seal::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--petal);animation:ring 2.2s ease-out infinite}
@@ -47,9 +47,9 @@ section{max-width:620px;margin:0 auto;padding:72px 24px}
 /* hero */
 .hero{min-height:100vh;display:grid;place-content:center;text-align:center;padding:48px 24px}
 .hero .lead{color:var(--mute);margin-bottom:1.4em}
-.hero h1{font-size:clamp(2.6rem,15vw,5.4rem);font-weight:300}
+.hero h1{font-family:var(--name);font-optical-sizing:auto;font-size:clamp(2.6rem,15vw,5.4rem);font-weight:400;line-height:1.15}
 @media (max-width:600px){.hero h1 span{display:block;white-space:nowrap}.hero h1 i{display:block;font-size:.5em;line-height:1.5;padding:0}}
-.hero h1 i{font-style:italic;color:var(--petal);padding:0 .12em}
+.hero h1 i{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--petal);padding:0 .12em}
 .hero .date{font:italic 300 1.5rem var(--serif);margin-top:1.4em}
 .hero .place{color:var(--mute);font-size:.92rem}
 .hero.in>*{animation:rise .9s both}
@@ -97,7 +97,7 @@ section{max-width:620px;margin:0 auto;padding:72px 24px}
 .fam2 b{display:block;font:600 clamp(.85rem,3.8vw,1.05rem)/1.4 var(--serif);margin-bottom:12px}
 .fam2 p{font-size:.78rem;margin:0;line-height:1.55;color:var(--mute)}
 .duo{margin-top:48px}
-.duo .nm{font:300 clamp(2.8rem,14vw,4.2rem)/1.1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.01em;white-space:nowrap}
+.duo .nm{font:400 clamp(2.8rem,14vw,4.2rem)/1.15 var(--name);font-optical-sizing:auto;letter-spacing:-.01em;white-space:nowrap}
 .duo .rk{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:14px 0 24px;color:var(--mute)}
 .duo .rk:last-child{margin-bottom:0}
 .duo .amp{font:italic 300 2rem var(--serif);color:var(--petal);margin:0 0 24px}
@@ -149,7 +149,7 @@ input[type=text],select,textarea{width:100%;margin-top:6px;padding:11px 12px;bor
 textarea{min-height:84px;resize:vertical}
 fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
 .choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.choice label{border:1px solid var(--line);border-radius:6px;padding:11px;text-align:center;cursor:pointer;transition:background .2s,color .2s}
+.choice label{position:relative;border:1px solid var(--line);border-radius:6px;padding:11px;text-align:center;cursor:pointer;transition:background .2s,color .2s}
 .choice input{position:absolute;opacity:0}
 .choice label:has(input:checked){background:var(--accent);color:var(--paper);border-color:var(--accent)}
 .choice label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
@@ -252,6 +252,13 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:40px 24px 56
     <form id="form" novalidate>
       <label>Tên của bạn<input type="text" id="name" autocomplete="name" maxlength="60" required></label>
       <label>Lời chúc của bạn<textarea id="note" maxlength="300" required></textarea></label>
+      <fieldset>
+        <legend>Bạn có thể đến dự không?</legend>
+        <div class="choice">
+          <label><input type="radio" name="attend" value="yes">Mình sẽ tham dự</label>
+          <label><input type="radio" name="attend" value="no">Mình bận rồi</label>
+        </div>
+      </fieldset>
       <input type="text" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <p class="err" id="err" role="alert"></p>
       <button class="btn solid" type="submit">Gửi lời chúc</button>
@@ -508,9 +515,9 @@ if(SU){
   }else loadWishes();
   $("moreW").addEventListener("click",function(){renderWishes(true)});
 }
-function sent(name,wish,mod){
+function sent(name,wish,mod,at){
   $("tTitle").textContent="Cảm ơn bạn, "+name+"!";
-  $("tText").textContent=mod?"Lời chúc của bạn sẽ hiện lên thiệp sau khi được duyệt.":"Chúng mình rất vui khi nhận được lời chúc của bạn.";
+  $("tText").textContent=(at==="yes"?"Hẹn gặp bạn tại tiệc cưới nhé! ":"Tiếc quá, hẹn bạn dịp khác nhé! ")+(mod?"Lời chúc của bạn sẽ hiện lên thiệp sau khi được duyệt.":"Chúng mình rất vui khi nhận được lời chúc của bạn.");
   form.style.display="none";$("thanks").style.display="block";$("thanks").focus();
   if(SU&&!mod&&wishList){wishList.unshift({name:name,wish:wish});$("wishes").innerHTML="";shown=0;renderWishes(false)}
 }
@@ -520,14 +527,16 @@ form.addEventListener("submit",function(e){
   var name=$("name").value.trim(),wish=$("note").value.trim();
   if(!name){$("err").textContent="Bạn nhập tên giúp chúng mình nhé.";$("name").focus();return}
   if(!wish){$("err").textContent="Bạn viết vài lời chúc giúp chúng mình nhé.";$("note").focus();return}
+  var atEl=form.querySelector("input[name=attend]:checked"),at=atEl?atEl.value:"";
+  if(!at){$("err").textContent="Bạn chọn giúp chúng mình tham dự hay bận nhé.";form.querySelector("input[name=attend]").focus();return}
   $("err").textContent="";
   try{localStorage.setItem(KEY,JSON.stringify({name:name}))}catch(x){}
-  if(!SU){sent(name,wish,false);return}
+  if(!SU){sent(name,wish,false,at);return}
   sending=true;
   var btn=form.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Đang gửi…";
-  fetch(SU,{method:"POST",body:JSON.stringify({name:name,wish:wish,website:$("hp").value})})
+  fetch(SU,{method:"POST",body:JSON.stringify({name:name,wish:wish,attend:at==="yes"?"Sẽ tham dự":"Bận",website:$("hp").value})})
     .then(function(r){return r.json()})
-    .then(function(j){if(!j.ok)throw 0;$("note").value="";sent(name,wish,j.moderated)})
+    .then(function(j){if(!j.ok)throw 0;$("note").value="";if(atEl)atEl.checked=false;sent(name,wish,j.moderated,at)})
     .catch(function(){$("err").textContent="Chưa gửi được, bạn kiểm tra mạng rồi thử lại nhé."})
     .then(function(){sending=false;btn.disabled=false;btn.textContent="Gửi lời chúc"});
 });
