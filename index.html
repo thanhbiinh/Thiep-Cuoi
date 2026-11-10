@@ -1501,7 +1501,7 @@
       <h2>Địa điểm</h2>
       <div class="card">
         <p style="margin:0 0 .5em;color:var(--mute)">Tiệc cưới sẽ tổ chức tại</p>
-        <h3 data-bind="address" style="margin-bottom:.6em"></h3>
+        <h3 style="margin-bottom:.6em"><span data-bind="venueName"></span><br><span data-bind="area"></span></h3>
         <p data-bind="dateTime"></p>
         <a class="btn solid" id="mapLink" target="_blank" rel="noopener">Mở Google Maps</a>
       </div>
@@ -1564,14 +1564,15 @@
     var C = {
       a: "Thành Long", b: "Thuý Hà",
       sheetUrl: "https://script.google.com/macros/s/AKfycbyI1kYotve1R_q06WHhaIo3zFwEOK3ayP7tKjeAxEOyaOWqY52dUkHycgkdB9FgOtUJ/exec", // dán link Apps Script (kết thúc bằng /exec) để nhận và hiện lời chúc, xem HUONG-DAN.txt
-      synth: false, // true = dùng nhạc piano tự tạo khi chưa có file mp3
-      gift: { qrText: "Mừng cưới Thành Long & Thuý Hà", qrImg: "", cap: "Quét mã để gửi quà mừng cho cô dâu và chú rể" }, // qrImg: dán ảnh QR ngân hàng (data:image/png;base64,...) để dùng mã thật
-      bg: "bg.webp", // ảnh nền mờ, mặc định là file bg.webp đặt cùng thư mục với index.html; đổi tên/đường dẫn nếu cần, để trống = không có ảnh nền
-      photos: [], // dán ảnh dạng data:image/jpeg;base64,... hoặc {src:"...",cap:"..."}; để trống sẽ hiện khung mẫu
-      music: "",  // để trống = nhạc piano tự tạo; hoặc dán data:audio/mpeg;base64,...
+      synth: false, 
+      gift: { qrText: "Mừng cưới Thành Long & Thuý Hà", qrImg: "", cap: "Quét mã để gửi quà mừng cho cô dâu và chú rể" }, 
+      bg: "bg.webp",  
+      photos: [],
+      music: "", 
       when: "2026-11-22T09:30:00+07:00",
       lunar: "Tức ngày 14 tháng 10 năm Bính Ngọ",
-      address: "Xã Vĩnh Hải, Hải Phòng", mapQuery: "Trường Tiểu học Tiền Phong, Xã Vĩnh Hải, Hải Phòng", city: "Quảng Ninh",
+      venueName: "Trường Tiểu học Tiền Phong - Vĩnh Phong", area: "Xã Vĩnh Hải, Thành phố Hải Phòng",
+      address: "Trường Tiểu học Tiền Phong - Vĩnh Phong, Xã Vĩnh Hải, Thành Phố Hải Phòng", mapQuery: "Trường Tiểu học Tiền Phong - Vĩnh Phong, Xã Vĩnh Hải, Thành Phố Hải Phòng", city: "Quảng Ninh",
     };
     if (window.CFG) { if (CFG.bg) C.bg = CFG.bg; if (CFG.photos && CFG.photos.length) C.photos = CFG.photos; if (CFG.music) C.music = CFG.music; if (CFG.qrImg) C.gift.qrImg = CFG.qrImg }
     (function () {
@@ -1588,7 +1589,7 @@
       var dateText = W[3] + "." + W[2] + "." + W[1];
       var vals = {
         names: C.a + " & " + C.b, a: C.a, b: C.b, dateText: dateText, venue: C.address,
-        venueName: C.venueName, address: C.address, dateTime: dateText + " · " + W[4] + ":" + W[5]
+        venueName: C.venueName, area: C.area, address: C.address, dateTime: dateText + " · " + W[4] + ":" + W[5]
       };
       document.querySelectorAll("[data-bind]").forEach(function (el) { el.textContent = vals[el.dataset.bind] || "" });
       document.title = "Thiệp cưới " + vals.names;
@@ -1601,7 +1602,7 @@
         $("bigDate").textContent = "Ngày " + D + " tháng " + M + " năm " + Y;
         $("timeLine").textContent = "Vào lúc " + pad(H) + ":" + pad(MI);
         $("lunar").textContent = C.lunar || "";
-        $("venueLine").textContent = C.address;
+        $("venueLine").textContent = C.venueName; $("venueLine").appendChild(document.createElement("br")); $("venueLine").appendChild(document.createTextNode(C.area));
         $("calh").textContent = "Tháng " + M + " · " + Y;
         var h = "", off = (new Date(Date.UTC(Y, M - 1, 1)).getUTCDay() + 6) % 7, n = new Date(Date.UTC(Y, M, 0)).getUTCDate(), i;
         ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].forEach(function (w) { h += "<b>" + w + "</b>" });
