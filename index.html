@@ -992,13 +992,6 @@
       }
     }
 
-    @media (prefers-reduced-motion:reduce) {
-      .gal {
-        overflow-x: auto;
-        -webkit-mask-image: none;
-        mask-image: none
-      }
-    }
 
     .fr{flex:0 0 auto;width:clamp(150px,40vw,210px);background:var(--card);padding:9px 9px 26px;border:1px solid var(--line);border-radius:0;box-shadow:none;cursor:zoom-in;rotate:var(--r,0deg);font:inherit;transition:transform .35s}
 @media (hover:hover){.fr:hover{transform:scale(1.06) translateY(-5px)}}
@@ -1229,6 +1222,15 @@
       * {
         animation: none !important;
         transition: none !important
+      }
+
+      .gal .row {
+        animation: slide 46s linear infinite !important
+      }
+
+      .gal .row.rev {
+        animation-duration: 58s !important;
+        animation-direction: reverse !important
       }
 
       html {
